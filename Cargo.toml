@@ -1,0 +1,20 @@
+[package]
+name = "cruppers"
+authors = ["Nevin Flanagan"]
+description = "A minimal crate to support using no_std Rust libraries in C++ "
+version = "0.4.0"
+edition = "2021"
+readme = "README.md"
+
+[lib]
+name="cpp"
+crate-type=["rlib"]
+
+[features]
+default = ["memory", "exception"]
+memory = []
+exception = []
+iostream = []
+
+[build-dependencies]
+cc  = ">= 1.0.0"
