@@ -2,7 +2,8 @@
 name = "cruppers"
 authors = ["Nevin Flanagan"]
 description = "A minimal crate to support using no_std Rust libraries in C++ "
-version = "0.4.1"
+repository = "https://github.com/alestane/cruppers"
+version = "0.4.2"
 edition = "2021"
 readme = "README.md"
 license = "UPL-1.0"
