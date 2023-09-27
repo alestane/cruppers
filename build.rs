@@ -9,6 +9,7 @@ fn compile<F : FnOnce(&mut Build)> (file: PathBuf, process: Option<F>) -> Result
 		let mut job = Build::new();
 		job
 			.cpp(true)
+			.std("c++14")
 			.file(file.clone())
 	    	.include("include");
 		if let Some(process) = process {
@@ -33,7 +34,7 @@ fn main() {
 	std::fs::read_dir("src").map(
 		|dir| {
 			for source in dir.flatten() {
-				let _ = compile(source.path(), debug);		
+				let _ = compile(source.path(), debug);
 			}
 		}
 	).ok();

@@ -1,4 +1,5 @@
 #![no_std]
+#![allow(internal_features)]
 #![cfg_attr(feature="exception", feature(lang_items))]
 #![cfg_attr(feature="exception", feature(slice_take))]
 
