@@ -12,6 +12,11 @@ license = "UPL-1.0"
 name="cpp"
 crate-type=["rlib"]
 
+[[example]]
+name = "hello_world"
+crate-type = ["staticlib"]
+required-features = ["memory", "iostream"]
+
 [features]
 default = ["memory", "exception"]
 memory = []
