@@ -4,10 +4,15 @@
 #![cfg_attr(feature="exception", feature(slice_take))]
 
 #[cfg(all(not(test), feature="exception"))]
-pub mod exception;
+mod exception;
 
 #[cfg(all(not(test), feature="memory"))]
-pub mod memory;
+mod memory;
 
 #[cfg(all(not(test), feature="iostream"))]
 pub mod iostream;
+
+pub mod prelude {
+	#[cfg(all(not(test), feature="iostream"))]
+	pub use crate::{eprint, eprintln, print, println};
+}

@@ -1,6 +1,6 @@
 #![no_std]
 
-use cpp::println;
+use cpp::*;
 
 #[no_mangle]
 extern "C" fn greet() {

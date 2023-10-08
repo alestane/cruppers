@@ -3,7 +3,7 @@ name = "cruppers"
 authors = ["Nevin Flanagan"]
 description = "A minimal crate to support using no_std Rust libraries in C++ "
 repository = "https://github.com/alestane/cruppers"
-version = "0.4.3"
+version = "0.5.0"
 edition = "2021"
 readme = "README.md"
 license = "UPL-1.0"
@@ -18,7 +18,7 @@ crate-type = ["staticlib"]
 required-features = ["memory", "iostream"]
 
 [features]
-default = ["memory", "exception"]
+default = ["memory", "exception", "iostream"]
 memory = []
 exception = []
 iostream = []
