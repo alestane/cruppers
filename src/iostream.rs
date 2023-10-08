@@ -20,7 +20,7 @@ extern "C" {
 impl fmt::Write for Ostream {
     fn write_str(&mut self, text: &str) -> fmt::Result {
         #[cfg(windows)]
-        let text: Vec<_> = text.encode_utf16().chain(once('\0')).collect();
+        let text: Vec<_> = text.encode_utf16().chain(once(0u16)).collect();
         #[cfg(not(windows))]
         let text: Vec<u32> = text.chars().chain(once('\0')).map(char::into).collect();
         unsafe { push_wostream(self, from_ref(&text[0]) as *const _).then_some(()).ok_or(fmt::Error) }
