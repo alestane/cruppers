@@ -24,11 +24,13 @@ fn compile<F : FnOnce(&mut Build)> (file: PathBuf, process: Option<F>) -> Result
 }
 
 fn main() {
-	let debug = if std::env::var("_DEBUG") == Ok(String::from("true")) { Some( |job: &mut Build| {
+	let debug = if std::env::var("DEBUG") == Ok(String::from("true")) { Some( |job: &mut Build| {
+		if job.get_compiler().is_like_msvc() {
+			job.flag("-MDd");
+		}
 		job
-		.flag_if_supported("-MDd")
-		.flag_if_supported("-fms-runtime-lib=dll_dbg")
-		.define("_ITERATOR_DEBUG_LEVEL", "2");
+			.flag_if_supported("-fms-runtime-lib=dll_dbg")
+			.define("_ITERATOR_DEBUG_LEVEL", "2");
 	})
 	} else { None };
 	std::fs::read_dir("src").map(
